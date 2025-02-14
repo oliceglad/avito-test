@@ -1,12 +1,10 @@
 import s from "./Items.module.scss";
-import Skeleton from "@mui/material/Skeleton";
-import Stack from "@mui/material/Stack";
 import { ItemCard } from "./ItemCard";
 import { Loader } from "../UI/loader";
 
 export const ItemCardList = ({ items, filteredItems, isLoading, isError }) => {
   return (
-    <ul>
+    <ul className={s.ItemCardList}>
       {items ? (
         filteredItems.length > 0 ? (
           filteredItems.map((elem, key) => <ItemCard key={key} elem={elem} />)
