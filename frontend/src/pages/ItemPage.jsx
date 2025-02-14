@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 
 export const ItemPage = () => {
-  const { itemId } = useParams();
+  const { id } = useParams();
 
   return (
     <div>
-        ItemPage {itemId}
+        ItemPage {id}
     </div>
   );
 };
