@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/form" Component={FormPage} />
-          <Route path="/item/:id" Component={ItemPage} />
+          <Route path="/item/:itemId" Component={ItemPage} />
           <Route path="/list" Component={ListPage} />
           <Route path="*" element={<Navigate to="/list" />} />
         </Routes>
