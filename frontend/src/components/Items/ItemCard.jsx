@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import s from "./Items.module.scss";
 import { useNavigate } from "react-router-dom";
-import { IconCard } from "../UI/iconCard";
+import { IconCard } from "../UI/IconCard";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 export const ItemCard = ({ elem }) => {
@@ -21,7 +21,7 @@ export const ItemCard = ({ elem }) => {
           </div>
         </div>
       </div>
-      <Button variant="outlined" onClick={() => clickHandler()} sx={{height: 40}}>
+      <Button variant="contained" onClick={() => clickHandler()} sx={{height: 40}}>
         Открыть
       </Button>
     </div>
