@@ -9,11 +9,10 @@ import {
   STEPS,
   DEFAULT_STATE,
 } from "../utils/variables";
-// import { validate } from "../utils/validate";
 import StepOne from "../components/Form/StepOne";
 import StepTwo from "../components/Form/StepTwo";
 import { useAddItemMutation, useUpdateItemMutation } from "../api/items";
-import { Loader } from "../components/UI/Loader";
+import { validateStep } from "../utils/validate";
 
 export const FormPage = () => {
   const navigate = useNavigate();
@@ -41,7 +40,24 @@ export const FormPage = () => {
     }
   };
 
+  const handleNext = (e, values) => {
+    const errors = validateStep(values, activeStep);
+    e.preventDefault();
+    if (Object.keys(errors).length === 0) {
+      setActiveStep(activeStep + 1);
+    } else {
+      alert("Заполните все поля!");
+    }
+  };
+
   const onSubmitHandler = async (values) => {
+    const errors = validateStep(values, activeStep);
+
+    if (Object.keys(errors).length > 0) {
+      alert("Заполните все поля!");
+      return;
+    }
+
     try {
       if (isEditing) {
         await updateItem({ id: isEditing.id, updatedItem: values }).unwrap();
@@ -62,7 +78,7 @@ export const FormPage = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmitHandler}
-        enableReinitialize={isEditing ? true : false}
+        enableReinitialize={isEditing}
       >
         {({ values, setFieldValue, errors, touched }) => (
           <Form>
@@ -108,8 +124,7 @@ export const FormPage = () => {
                   variant="contained"
                   type="button"
                   onClick={(e) => {
-                    e.preventDefault();
-                    setActiveStep(activeStep + 1);
+                    handleNext(e, values);
                   }}
                 >
                   Далее
@@ -117,7 +132,7 @@ export const FormPage = () => {
               ) : (
                 <Button
                   variant="contained"
-                  loading={isLoading ? true : false}
+                  loading={isLoading}
                   type="submit"
                   sx={{ marginLeft: 3 }}
                 >
@@ -125,11 +140,6 @@ export const FormPage = () => {
                 </Button>
               )}
             </div>
-            {isError && (
-              <Typography color="error" variant="body2">
-                Ошибка при добавлении элемента: {error.message}
-              </Typography>
-            )}
           </Form>
         )}
       </Formik>
