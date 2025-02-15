@@ -39,7 +39,7 @@ export const Item = ({ item, handlerNavigate }) => {
           <div className={s.Item_info_added}>
             <div>{item.propertyType}</div>
             <div>
-              <strong>Площадь:</strong> {item.area`${item.area} м²`}
+              <strong>Площадь:</strong> {`${item.area} м²`}
             </div>
             <div>
               <strong>Количество комнат:</strong> {item.rooms}
@@ -56,7 +56,7 @@ export const Item = ({ item, handlerNavigate }) => {
               <strong>Год выпуска:</strong> {item.year}
             </div>
             <div>
-              <strong>Пробег:</strong> {item.mileage`${item.mileage} км`}
+              <strong>Пробег:</strong> {`${item.mileage} км`}
             </div>
           </div>
         )}
@@ -65,7 +65,7 @@ export const Item = ({ item, handlerNavigate }) => {
             <div>{item.serviceType}</div>
             <div>
               <strong>Опыт работы:</strong>{" "}
-              {item.experience`${item.experience} лет`}
+              {`${item.experience} лет`}
             </div>
             <div>
               <strong>График работы:</strong> {item.workSchedule}
