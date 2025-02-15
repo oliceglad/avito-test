@@ -4,7 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import s from "./Items.module.scss";
 import { Button } from "@mui/material";
 
-export const Item = ({ item, handlerNavigate}) => {
+export const Item = ({ item, handlerNavigate }) => {
   return (
     <div className={s.Item}>
       <div className={s.Item_main}>
@@ -20,7 +20,7 @@ export const Item = ({ item, handlerNavigate}) => {
         <Button
           variant="contained"
           onClick={() => handlerNavigate("/form")}
-          sx={{display: "block", justifyContent: "center", lineHeight: 0}}
+          sx={{ display: "block", justifyContent: "center", lineHeight: 0 }}
         >
           <EditIcon />
         </Button>
@@ -28,52 +28,47 @@ export const Item = ({ item, handlerNavigate}) => {
 
       <div className={s.Item_info}>
         <div>
-          <h2 className={s.Item_info_title}>{item.name || "Без названия"}</h2>
-          <p className={s.Item_info_desc}>
-            {item.description || "Описание отсутствует"}
-          </p>
+          <h2 className={s.Item_info_title}>{item.name}</h2>
+          <p className={s.Item_info_desc}>{item.description}</p>
           <div>
             <LocationOnIcon />
-            {item.location || "Не указано"}
+            {item.location}
           </div>
         </div>
         {item.type === "Недвижимость" && (
           <div className={s.Item_info_added}>
-            <div>{item.propertyType || "Не указано"}</div>
+            <div>{item.propertyType}</div>
             <div>
-              <strong>Площадь:</strong>{" "}
-              {item.area ? `${item.area} м²` : "Не указано"}
+              <strong>Площадь:</strong> {item.area`${item.area} м²`}
             </div>
             <div>
-              <strong>Количество комнат:</strong> {item.rooms || "Не указано"}
+              <strong>Количество комнат:</strong> {item.rooms}
             </div>
           </div>
         )}
         {item.type === "Авто" && (
           <div className={s.Item_info_added}>
-            <div>{item.brand || "Не указано"}</div>
+            <div>{item.brand}</div>
             <div>
-              <strong>Модель:</strong> {item.model || "Не указано"}
+              <strong>Модель:</strong> {item.model}
             </div>
             <div>
-              <strong>Год выпуска:</strong> {item.year || "Не указано"}
+              <strong>Год выпуска:</strong> {item.year}
             </div>
             <div>
-              <strong>Пробег:</strong>{" "}
-              {item.mileage ? `${item.mileage} км` : "Не указано"}
+              <strong>Пробег:</strong> {item.mileage`${item.mileage} км`}
             </div>
           </div>
         )}
         {item.type === "Услуги" && (
           <div className={s.Item_info_added}>
-            <div>{item.serviceType || "Не указано"}</div>
+            <div>{item.serviceType}</div>
             <div>
               <strong>Опыт работы:</strong>{" "}
-              {item.experience ? `${item.experience} лет` : "Не указано"}
+              {item.experience`${item.experience} лет`}
             </div>
             <div>
-              <strong>График работы:</strong>{" "}
-              {item.workSchedule || "Не указано"}
+              <strong>График работы:</strong> {item.workSchedule}
             </div>
           </div>
         )}
