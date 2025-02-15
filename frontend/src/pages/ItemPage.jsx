@@ -29,7 +29,7 @@ export const ItemPage = () => {
       <Button
         variant="contained"
         startIcon={<ArrowBackIcon />}
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/list")}
         sx={{ marginBottom: 2 }}
       >
         Назад

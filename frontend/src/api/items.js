@@ -13,7 +13,28 @@ export const itemsApi = createApi({
     getItemById: builder.query({
       query: (id) => `/${id}`,
     }),
+
+    addItem: builder.mutation({
+      query: (newItem) => ({
+        url: "",
+        method: "POST",
+        body: newItem,
+      }),
+    }),
+
+    updateItem: builder.mutation({
+      query: ({ id, updatedItem }) => ({
+        url: `/${id}`,
+        method: "PUT",
+        body: updatedItem,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllItemsQuery, useGetItemByIdQuery } = itemsApi;
+export const {
+  useGetAllItemsQuery,
+  useGetItemByIdQuery,
+  useAddItemMutation,
+  useUpdateItemMutation,
+} = itemsApi;

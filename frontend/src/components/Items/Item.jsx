@@ -19,7 +19,7 @@ export const Item = ({ item, handlerNavigate }) => {
 
         <Button
           variant="contained"
-          onClick={() => handlerNavigate("/form")}
+          onClick={() => handlerNavigate("/form", { state: { item } })}
           sx={{ display: "block", justifyContent: "center", lineHeight: 0 }}
         >
           <EditIcon />
@@ -64,8 +64,7 @@ export const Item = ({ item, handlerNavigate }) => {
           <div className={s.Item_info_added}>
             <div>{item.serviceType}</div>
             <div>
-              <strong>Опыт работы:</strong>{" "}
-              {`${item.experience} лет`}
+              <strong>Опыт работы:</strong> {`${item.experience} лет`}
             </div>
             <div>
               <strong>График работы:</strong> {item.workSchedule}
