@@ -9,7 +9,11 @@ export const itemsApi = createApi({
     getAllItems: builder.query({
       query: () => ``,
     }),
+
+    getItemById: builder.query({
+      query: (id) => `/${id}`,
+    }),
   }),
 });
 
-export const { useGetAllItemsQuery } = itemsApi;
+export const { useGetAllItemsQuery, useGetItemByIdQuery } = itemsApi;
